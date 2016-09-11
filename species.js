@@ -87,10 +87,12 @@ var Species = function(planet_name) {
     
     this.shape = "biped";
     
-    var bodyNum = 1 + Math.floor(Math.random() * 2);
+    var bodyNum = 1 + Math.floor(Math.random() * 3);
+    //bodyNum = 2;
     this.bodyImage.src = "images/species/" + this.shape + "_" + bodyNum + ".png";
 
-    var headNum = 1 + Math.floor(Math.random() * 2);
+    var headNum = 1 + Math.floor(Math.random() * 3);
+    //headNum = 3;
     this.headImage.src = "images/species/head_" + headNum + ".png";
 }
 
