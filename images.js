@@ -238,6 +238,21 @@ function getSpeciesImage(bodyImage, headImage, width, height) {
                   j = 100;
               }
           }
+          
+          for (var j = 0; j < defaultColors.secondary.length; j++) {
+          
+              if(imageData.data[i]   == defaultColors.secondary[j][0] &&
+                 imageData.data[i+1] == defaultColors.secondary[j][1] &&
+                 imageData.data[i+2] == defaultColors.secondary[j][2]
+              ){
+                  // change to your new rgb
+                  imageData.data[i]   = newColors.secondary[j][0];
+                  imageData.data[i+1] = newColors.secondary[j][1];
+                  imageData.data[i+2] = newColors.secondary[j][2];
+                  
+                  j = 100;
+              }
+          }
 
       }
       
@@ -259,7 +274,7 @@ var speciesColors = function(primary, secondary) {
 function defaultSpeciesColors() {
 
     var primary = [[148, 231, 66], [82, 203, 33], [24, 130, 24]];
-    var secondary = [];
+    var secondary = [[214, 93, 90], [189, 32, 33], [115, 28, 49]];
     return new speciesColors(primary, secondary);
 
 }
@@ -269,17 +284,24 @@ function getSpeciesColors() {
     var def = defaultSpeciesColors();
     
     var primary = [rgbToHsl(def.primary[0]), rgbToHsl(def.primary[1]), rgbToHsl(def.primary[2])];
+    var secondary = [rgbToHsl(def.secondary[0]), rgbToHsl(def.secondary[1]), rgbToHsl(def.secondary[2])];
     
     var primaryShift = Math.random();
-    
     for(var i = 0; i < primary.length; i++ ) {
         primary[i][0] += primaryShift;
         primary[i][0] %= 1;
     }
     
+    var secondaryShift = Math.random();
+    for(var i = 0; i < secondary.length; i++ ) {
+        secondary[i][0] += secondaryShift;
+        secondary[i][0] %= 1;
+    }
+    
     var primary2 = [hslToRgb(primary[0]), hslToRgb(primary[1]), hslToRgb(primary[2])];
+    var secondary2 = [hslToRgb(secondary[0]), hslToRgb(secondary[1]), hslToRgb(secondary[2])];
 
-    return new speciesColors(primary2, []);
+    return new speciesColors(primary2, secondary2);
 
 }
 

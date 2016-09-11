@@ -90,7 +90,7 @@ var Species = function(planet_name) {
     var bodyNum = 1 + Math.floor(Math.random() * 2);
     this.bodyImage.src = "images/species/" + this.shape + "_" + bodyNum + ".png";
 
-    var headNum = 1 + Math.floor(Math.random() * 0);
+    var headNum = 1 + Math.floor(Math.random() * 2);
     this.headImage.src = "images/species/head_" + headNum + ".png";
 }
 
