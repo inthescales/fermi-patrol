@@ -1,0 +1,51 @@
+<html>
+
+  <head>
+  
+    <meta charset="UTF-8">
+    <title>FERMI PATROL</title>
+    <link rel="stylesheet" href="fermi_patrol.css" type="text/css">
+    
+    <script src="underscore.js"></script>
+    <script src="images.js"></script>
+    <script src="species.js"></script>
+    <script src="fermi_patrol.js"></script>
+    <script src="engine.js"></script>
+    <script src="ui_base.js"></script>
+    <script src="button.js"></script>
+    <script src="checkbox.js"></script>
+    <script src="screen.js"></script>
+    <script src="names.js"></script>
+    <script src="CanvasInput.min.js"></script>
+  </head>
+
+    <body onload="start_game();">
+
+        <div class="canvas_container" style="display: block; width: 1024px; margin: 40px auto auto auto;">
+    
+        <canvas id="game_canvas" width="1024" height="848" style="border:1px solid white;">
+        </canvas>
+    
+        </div>
+
+  </body>
+  
+  <script>
+    
+    function start_game() {
+
+        var ctx = get_context();
+
+        var canvas = document.getElementById("game_canvas");
+        var engine = new GameEngine(canvas, 30);      
+
+        engine.currentScreen = new PanelScreen();
+        engine.currentScreen.setupScreen(engine, "panel");
+        
+        engine.run();
+
+    }
+    
+  </script>
+  
+</html>

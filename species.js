@@ -70,7 +70,7 @@ var Species = function(planet_name) {
     this.bodyImage.onload = function() {
         
         if(this.species.head_ok) {
-            this.species.image = getSpeciesImage(this, this.species.headImage, 240, 240);
+            this.species.image = getSpeciesImage(this, this.species.headImage, 240, 240, this.species.morphology);
         }
         this.species.body_ok = true;
     }
@@ -80,19 +80,34 @@ var Species = function(planet_name) {
     this.headImage.onload = function() {
         
         if(this.species.body_ok) {
-            this.species.image = getSpeciesImage(this.species.bodyImage, this, 240, 240);
+            this.species.image = getSpeciesImage(this.species.bodyImage, this, 240, 240, this.species.morphology);
         }
         this.species.head_ok = true;
     }
     
     this.shape = "biped";
     
-    var bodyNum = 1 + Math.floor(Math.random() * 3);
-    //bodyNum = 2;
+    var bodyChoices = 0;
+    var headChoices = 0
+    this.morphology = new Morphology();
+    
+    if (this.shape == "biped") {
+        bodyChoices = 4;
+        headChoices = 4;
+        this.morphology.neck_point = [33, 100];
+    }
+    else if (this.shape == "quadruped") {
+        bodyChoices = 1;
+        headChoices = 5;
+        this.morphology.neck_point = [130, 0];
+    }
+    
+    var bodyNum = 1 + Math.floor(Math.random() * bodyChoices);
+    //bodyNum = 4;
     this.bodyImage.src = "images/species/" + this.shape + "_" + bodyNum + ".png";
 
-    var headNum = 1 + Math.floor(Math.random() * 3);
-    //headNum = 3;
+    var headNum = 1 + Math.floor(Math.random() * headChoices);
+    headNum = 5;
     this.headImage.src = "images/species/head_" + headNum + ".png";
 }
 
@@ -814,4 +829,10 @@ var Message = function(psych) {
     }
     
     this.line.push(random_choice(closings));
+}
+
+// MORPHOLOGY ===================================
+
+var Morphology = function() {
+
 }

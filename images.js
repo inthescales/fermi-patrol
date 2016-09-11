@@ -205,7 +205,7 @@ function drawSpecies(species, context, x, y) {
     context.drawImage(species.image, x + 100, y - 120);
 }
 
-function getSpeciesImage(bodyImage, headImage, width, height) {
+function getSpeciesImage(bodyImage, headImage, width, height, morphology) {
 
     var new_canvas = document.createElement('canvas');
     new_canvas.width = width * 2;
@@ -214,7 +214,7 @@ function getSpeciesImage(bodyImage, headImage, width, height) {
     new_context.imageSmoothingEnabled = false;
     
     new_context.drawImage(bodyImage, (width / 2), (height / 2) + 30, width, height);
-    new_context.drawImage(headImage, (width / 2) - 33, (height / 2) - 100, width, height);
+    new_context.drawImage(headImage, (width / 2) - morphology.neck_point[0], (height / 2) - morphology.neck_point[1], width, height);
     var imageData = new_context.getImageData(0, 0, width * 2, height * 2);   
     
     var defaultColors = defaultSpeciesColors();
