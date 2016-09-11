@@ -19,6 +19,8 @@ function play_sound(name) {
             audio = new Audio('sounds/blup_1.wav'); break;
         case "click_side":
             audio = new Audio('sounds/blip_1.wav'); break;
+        case "victory":
+            audio = new Audio('sounds/victory_tone.wav'); break;
     
     }
     

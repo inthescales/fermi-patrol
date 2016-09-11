@@ -2,7 +2,7 @@ var Planet = function() {
 
     this.name = generate_name();
     this.id = Math.floor( Math.random() * 10000).toString();
-    this.type = random_choice(["earthlike", "earthlike", "earthlike", "acidic", "radioactive", "idyllic", "harsh", "wild", "paradisical", "temperate"]);
+    this.type = random_choice(["earthlike", "earthlike", "earthlike", "acidic", "radioactive", "idyllic", "harsh", "wild", "paradisical", "temperate", "rich", "barren", "fertile", "alkaline", "metallic"]);
     this.moons = Math.floor(Math.random() * 10);
     this.rings = 0;
     this.atmosphere = "60% nitrogen, 10% oxygen, 30% whatever";
@@ -85,7 +85,7 @@ var Species = function(planet_name) {
         this.species.head_ok = true;
     }
     
-    this.shape = "biped";
+    this.shape = "multiped";
     
     var bodyChoices = 0;
     var headChoices = 0
@@ -93,21 +93,26 @@ var Species = function(planet_name) {
     
     if (this.shape == "biped") {
         bodyChoices = 4;
-        headChoices = 4;
+        headChoices = 7;
         this.morphology.neck_point = [33, 100];
     }
     else if (this.shape == "quadruped") {
-        bodyChoices = 1;
-        headChoices = 5;
+        bodyChoices = 3;
+        headChoices = 7;
+        this.morphology.neck_point = [130, 0];
+    }
+    else if (this.shape == "multiped") {
+        bodyChoices = 2;
+        headChoices = 7;
         this.morphology.neck_point = [130, 0];
     }
     
     var bodyNum = 1 + Math.floor(Math.random() * bodyChoices);
-    //bodyNum = 4;
+    bodyNum = 2;
     this.bodyImage.src = "images/species/" + this.shape + "_" + bodyNum + ".png";
 
     var headNum = 1 + Math.floor(Math.random() * headChoices);
-    headNum = 5;
+    //headNum = 7;
     this.headImage.src = "images/species/head_" + headNum + ".png";
 }
 
@@ -540,6 +545,13 @@ var Tech = function(psych) {
         }
         this.inventions.push(newinv);
     }
+    
+    var probeCount = 2;
+    var probeNum = 1 + Math.floor( Math.random() * probeCount);
+    
+    this.probeImage = new Image();
+    this.probeImage.crossOrigin = "Anonymous";
+    this.probeImage.src = "images/probes/probe_" + probeNum + ".png";
 
 }
 

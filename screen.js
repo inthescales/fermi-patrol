@@ -379,7 +379,7 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         }
         
         if (psych.oppressions.length <= 0) {
-            canvas.fillText("Egalitarian Society", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
+            canvas.fillText("Oppression: none", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
         } else {
             canvas.fillText("Oppressions:", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
             for(i = 0; i < psych.oppressions.length; i++) {
@@ -396,6 +396,8 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         
             canvas.fillText(message.line[i], draw_x + (grid_width * 0), draw_y + (grid_height * i));
         }
+        
+        canvas.drawImage(species.tech.probeImage, draw_x - 20, 280, 240, 240);
     }
 
 }
@@ -494,6 +496,8 @@ PanelScreen.prototype.draw_confirmation = function(canvas) {
 
 PanelScreen.prototype.killPlanet = function() {
 
+    play_sound("victory");
+    
     this.getNewPlanet();
     this.setMode(1);
     this.current_category = 0;
