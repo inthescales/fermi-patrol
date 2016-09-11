@@ -24,6 +24,7 @@ Button.prototype.setSounds = function(profile) {
 }
 
 Button.prototype.update = function(canvas) {
+
     var wasNotClicked = !this.clicked;
     
     var wasHovered = this.hovered;
@@ -33,7 +34,7 @@ Button.prototype.update = function(canvas) {
     if (!wasHovered && this.hovered && !this.hidden && this.enabled) {
         play_sound(this.mouseover_sound);
     }
- 
+
     if (this.clicked && wasNotClicked && this.enabled) {
         if (!_.isUndefined(this.handler)) {
             play_sound(this.click_sound);

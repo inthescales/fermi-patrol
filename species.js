@@ -85,7 +85,7 @@ var Species = function(planet_name) {
         this.species.head_ok = true;
     }
     
-    this.shape = "multiped";
+    //this.shape = "multiped";
     
     var bodyChoices = 0;
     var headChoices = 0
@@ -108,7 +108,7 @@ var Species = function(planet_name) {
     }
     
     var bodyNum = 1 + Math.floor(Math.random() * bodyChoices);
-    bodyNum = 2;
+    //bodyNum = 2;
     this.bodyImage.src = "images/species/" + this.shape + "_" + bodyNum + ".png";
 
     var headNum = 1 + Math.floor(Math.random() * headChoices);
@@ -129,16 +129,16 @@ Species.prototype.get_shape = function(habitat) {
     switch(habitat) {
     
         case "terrestrial":
-            shapes = ["biped", "quadruped", "multiped", "slitheroid", "spheroid", "blob", "rooted"];
+            shapes = ["biped", "quadruped", "multiped"/*, "slitheroid", "spheroid", "blob", "rooted"*/];
             break;
         case "amphibious":
-            shapes = ["biped", "quadruped", "multiped", "slitheroid", "blob", "rooted"];
+            shapes = ["biped", "quadruped", "multiped"/*, "slitheroid", "blob", "rooted"*/];
             break;
         case "aquatic":
-            shapes = ["biped", "quadruped", "fishoid", "eeloid", "spheroid", "blob", "rooted"];
+            shapes = ["biped", "quadruped", "fishoid"/*, "eeloid", "spheroid", "blob", "rooted"*/];
             break;
         case "subterranean":
-            shapes = ["biped", "quadruped", "multiped", "slitheroid", "spheroid", "blob"];
+            shapes = ["biped", "quadruped", "multiped"/*, "slitheroid", "spheroid", "blob"*/];
             break;
     }
     

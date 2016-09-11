@@ -7,6 +7,11 @@ var UIObject = {
         return  xIntersect && yIntersect;
     },
     updateStats: function(canvas){
+    
+        if (this.hidden) {
+            return;
+        }
+        
         if (this.intersects(this, canvas.mouse)) {
             this.hovered = true;
             if (canvas.mouse.clicked && this.hidden == false) {

@@ -351,7 +351,7 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         canvas.fillText(species.reproduction, draw_x + (grid_width * 0), draw_y + (grid_height * 13));
         
         if (species.image != null) {
-            drawSpecies(species, canvas, draw_x + grid_width + 100, draw_y + 70);       
+            drawSpecies(species, canvas, draw_x + grid_width + 120, draw_y + 30);
         }
     }
     else if (this.current_category == 2) {
@@ -402,6 +402,11 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         }
         
         canvas.drawImage(species.tech.probeImage, draw_x - 20, 280, 240, 240);
+    }
+    else if (this.current_category == 5) {
+    
+        canvas.fillText("Visual currently unavailable", 420, 300);
+            
     }
 
 }
