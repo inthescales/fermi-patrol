@@ -20,8 +20,6 @@ function getPlanetImage(image, cloudImage, width, height) {
     
     for (var i=0;i<imageData.data.length;i+=4)
       {
-          //console.log(imageData.data[i], imageData.data[i+1], imageData.data[i+2]);
-          //console.log(defaultColors.atmo[0]);
           // is this pixel the old rgb?
           
           for (var j = 0; j < defaultColors.atmo.length; j++) {
@@ -204,7 +202,7 @@ function getPlanetColors() {
 
 function drawSpecies(species, context, x, y) {
     
-    context.drawImage(species.image, x + 100, y - 100);
+    context.drawImage(species.image, x + 100, y - 120);
 }
 
 function getSpeciesImage(bodyImage, headImage, width, height) {
@@ -217,93 +215,31 @@ function getSpeciesImage(bodyImage, headImage, width, height) {
     
     new_context.drawImage(bodyImage, (width / 2), (height / 2) + 30, width, height);
     new_context.drawImage(headImage, (width / 2) - 33, (height / 2) - 100, width, height);
-    var imageData = new_context.getImageData(0, 0, width, height);   
+    var imageData = new_context.getImageData(0, 0, width * 2, height * 2);   
     
-    /*var defaultColors = defaultPlanetColors();
-    var newColors = getPlanetColors();
+    var defaultColors = defaultSpeciesColors();
+    var newColors = getSpeciesColors();
     
-    for (var i=0;i<imageData.data.length;i+=4)
+    for (var i=0;i< imageData.data.length ;i+=4)
       {
-          //console.log(imageData.data[i], imageData.data[i+1], imageData.data[i+2]);
-          //console.log(defaultColors.atmo[0]);
           // is this pixel the old rgb?
           
-          for (var j = 0; j < defaultColors.atmo.length; j++) {
+          for (var j = 0; j < defaultColors.primary.length; j++) {
           
-              if(imageData.data[i]   == defaultColors.atmo[j][0] &&
-                 imageData.data[i+1] == defaultColors.atmo[j][1] &&
-                 imageData.data[i+2] == defaultColors.atmo[j][2]
+              if(imageData.data[i]   == defaultColors.primary[j][0] &&
+                 imageData.data[i+1] == defaultColors.primary[j][1] &&
+                 imageData.data[i+2] == defaultColors.primary[j][2]
               ){
                   // change to your new rgb
-                  imageData.data[i]   = newColors.atmo[j][0];
-                  imageData.data[i+1] = newColors.atmo[j][1];
-                  imageData.data[i+2] = newColors.atmo[j][2];
-                  
-                  j = 100;
-              }
-          }
-          
-          for (var j = 0; j < defaultColors.water.length; j++) {
-          
-              if(imageData.data[i]   == defaultColors.water[j][0] &&
-                 imageData.data[i+1] == defaultColors.water[j][1] &&
-                 imageData.data[i+2] == defaultColors.water[j][2]
-              ){
-                  // change to your new rgb
-                  imageData.data[i]   = newColors.water[j][0];
-                  imageData.data[i+1] = newColors.water[j][1];
-                  imageData.data[i+2] = newColors.water[j][2];
-                  
-                  j = 100;
-              }
-          }
-          
-          for (var j = 0; j < defaultColors.veg.length; j++) {
-          
-              if(imageData.data[i]   == defaultColors.veg[j][0] &&
-                 imageData.data[i+1] == defaultColors.veg[j][1] &&
-                 imageData.data[i+2] == defaultColors.veg[j][2]
-              ){
-                  // change to your new rgb
-                  imageData.data[i]   = newColors.veg[j][0];
-                  imageData.data[i+1] = newColors.veg[j][1];
-                  imageData.data[i+2] = newColors.veg[j][2];
-                  
-                  j = 100;
-              }
-          }
-          
-          for (var j = 0; j < defaultColors.dirt.length; j++) {
-          
-              if(imageData.data[i]   == defaultColors.dirt[j][0] &&
-                 imageData.data[i+1] == defaultColors.dirt[j][1] &&
-                 imageData.data[i+2] == defaultColors.dirt[j][2]
-              ){
-                  // change to your new rgb
-                  imageData.data[i]   = newColors.dirt[j][0];
-                  imageData.data[i+1] = newColors.dirt[j][1];
-                  imageData.data[i+2] = newColors.dirt[j][2];
-                  
-                  j = 100;
-              }
-          }
-          
-          for (var j = 0; j < defaultColors.cloud.length; j++) {
-          
-              if(imageData.data[i]   == defaultColors.cloud[j][0] &&
-                 imageData.data[i+1] == defaultColors.cloud[j][1] &&
-                 imageData.data[i+2] == defaultColors.cloud[j][2]
-              ){
-                  // change to your new rgb
-                  imageData.data[i]   = newColors.cloud[j][0];
-                  imageData.data[i+1] = newColors.cloud[j][1];
-                  imageData.data[i+2] = newColors.cloud[j][2];
+                  imageData.data[i]   = newColors.primary[j][0];
+                  imageData.data[i+1] = newColors.primary[j][1];
+                  imageData.data[i+2] = newColors.primary[j][2];
                   
                   j = 100;
               }
           }
 
-      }*/
+      }
       
     
     new_context.putImageData(imageData, 0, 0);
@@ -311,6 +247,39 @@ function getSpeciesImage(bodyImage, headImage, width, height) {
     var image = new Image();
     image.src = new_canvas.toDataURL('image/png');
     return image;
+
+}
+
+var speciesColors = function(primary, secondary) {
+
+    this.primary = primary;
+    this.secondary = secondary;
+}
+
+function defaultSpeciesColors() {
+
+    var primary = [[148, 231, 66], [82, 203, 33], [24, 130, 24]];
+    var secondary = [];
+    return new speciesColors(primary, secondary);
+
+}
+
+function getSpeciesColors() {
+
+    var def = defaultSpeciesColors();
+    
+    var primary = [rgbToHsl(def.primary[0]), rgbToHsl(def.primary[1]), rgbToHsl(def.primary[2])];
+    
+    var primaryShift = Math.random();
+    
+    for(var i = 0; i < primary.length; i++ ) {
+        primary[i][0] += primaryShift;
+        primary[i][0] %= 1;
+    }
+    
+    var primary2 = [hslToRgb(primary[0]), hslToRgb(primary[1]), hslToRgb(primary[2])];
+
+    return new speciesColors(primary2, []);
 
 }
 
