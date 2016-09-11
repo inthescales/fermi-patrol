@@ -215,6 +215,7 @@ PanelScreen.prototype.add_form_objects = function(engine) {
     var formCancelButton = new Button("CANCEL", 725, 415, 200, 40);
     engine.gameObjects.push(formCancelButton);
     formCancelButton.screen = this;
+    formCancelButton.setSounds("side");
     formCancelButton.handler = function() {
 
         this.screen.setMode(0);
@@ -225,6 +226,7 @@ PanelScreen.prototype.add_form_objects = function(engine) {
     var formCompleteButton = new Button("SUBMIT", 725, 465, 200, 40);
     engine.gameObjects.push(formCompleteButton);
     formCompleteButton.screen = this;
+    formCompleteButton.setSounds("side");
     formCompleteButton.handler = function() {
 
         if (this.screen.isFormOk()) {
@@ -240,6 +242,7 @@ PanelScreen.prototype.add_form_objects = function(engine) {
     var waiverCancelButton = new Button("CANCEL", 295, 475, 200, 40);
     engine.gameObjects.push(waiverCancelButton);
     waiverCancelButton.screen = this;
+    waiverCancelButton.setSounds("side");
     waiverCancelButton.handler = function() {
 
         this.screen.setMode(0);
@@ -250,6 +253,7 @@ PanelScreen.prototype.add_form_objects = function(engine) {
     var waiverCompleteButton = new Button("SUBMIT", 535, 475, 200, 40);
     engine.gameObjects.push(waiverCompleteButton);
     waiverCompleteButton.screen = this;
+    waiverCompleteButton.setSounds("side");
     waiverCompleteButton.handler = function() {
 
         this.screen.setFormPage(3);
@@ -268,8 +272,8 @@ PanelScreen.prototype.add_form_objects = function(engine) {
     this.waiver_check = waiverCheck;
     
     var acceptButton = new Button("CONTINUE", 390, 470, 220, 40);
-    acceptButton.setSounds("side");
     engine.gameObjects.push(acceptButton);
+    acceptButton.setSounds("side");
     acceptButton.screen = this;
     acceptButton.handler = function() {
 
@@ -430,8 +434,6 @@ PanelScreen.prototype.draw_form = function(canvas) {
         
         canvas.fillText("ID#: " + this.planet.id, 355, 100);
         
-        //canvas.fillText("Planet ID: " + this.planet.id, 625, 100);
-        
         canvas.fillText("Reason for conservation:", 75, 150);
         
         if (this.show_correct_check == true) {
@@ -505,6 +507,8 @@ PanelScreen.prototype.killPlanet = function() {
 
 PanelScreen.prototype.savePlanet = function() {
 
+    play_sound("warning");
+
     this.setMode(2);
 }
 
@@ -574,6 +578,8 @@ PanelScreen.prototype.setFormPage = function(new_page) {
     
     if (new_page == 2) {
         this.waiver_check.hidden = false;
+        this.waiver_check.checked = false;
+        this.waiver_complete_button.enabled = false;
         this.waiver_complete_button.hidden = false;
         this.waiver_cancel_button.hidden = false;
     }

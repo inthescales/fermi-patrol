@@ -35,9 +35,11 @@ CheckBox.prototype.draw = function(canvas) {
     canvas.strokeRect(this.x, this.y, this.width, this.height);
     
     //draw check or x
+    var oldFont = canvas.font;
     canvas.font = "26px sans-serif";
     if (this.checked) {
         //canvas.fillText("\u2713", this.x+5, this.y);
         canvas.fillText("X", this.x+6, this.y);
     }
+    canvas.font = oldFont;
 }

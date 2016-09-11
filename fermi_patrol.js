@@ -21,7 +21,8 @@ function play_sound(name) {
             audio = new Audio('sounds/blip_1.wav'); break;
         case "victory":
             audio = new Audio('sounds/victory_tone.wav'); break;
-    
+        case "warning":
+            audio = new Audio('sounds/warning.wav'); break;    
     }
     
     if (audio != null) {
