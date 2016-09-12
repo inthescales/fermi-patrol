@@ -427,7 +427,9 @@ PanelScreen.prototype.draw_observe = function(canvas) {
             canvas.fillText(message.line[i], draw_x + (grid_width * 0), draw_y + (grid_height * i));
         }
         
-        canvas.drawImage(species.tech.probeImage, draw_x - 20, 280, 240, 240);
+        canvas.drawImage(species.tech.probeImage, draw_x + 20, 280, 240, 240);
+        
+        canvas.drawImage(species.tech.textImage, draw_x + 320, 280, 240, 240);
     }
     else if (this.current_category == 5) {
     

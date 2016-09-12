@@ -572,7 +572,14 @@ var Tech = function(psych) {
     this.probeImage = new Image();
     this.probeImage.crossOrigin = "Anonymous";
     this.probeImage.src = "images/probes/probe_" + probeNum + ".png";
+    
+    
+    var textCount = 3;
+    var textNum = 1 + Math.floor( Math.random() * textCount);
 
+    this.textImage = new Image();
+    this.textImage.crossOrigin = "Anonymous";
+    this.textImage.src = "images/texts/text_" + textNum + ".png";
 }
 
 //=======================================================
