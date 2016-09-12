@@ -31,6 +31,12 @@ GameEngine.prototype.setupCanvas = function() {
         engine.context2D.mouse.clicked = !engine.context2D.mouse.down;
         //console.log(engine.context2D.mouse.clicked);
         engine.context2D.mouse.down = true;
+        
+        if (engine.currentScreen.type == "title") {
+            engine.context2D.mouse.clicked = false;
+            engine.currentScreen = new PanelScreen();
+            engine.currentScreen.setupScreen(engine, "panel");
+        }
     });
  
     this.canvas.addEventListener("mouseup", function(e) {
@@ -53,7 +59,9 @@ GameEngine.prototype.run = function() {
 
 GameEngine.prototype.update = function() {
     _.each(this.gameObjects, function(obj) {
-        obj.update(this.context2D);
+        if (obj.hidden == false) {
+            obj.update(this.context2D);
+        }
     }, this);
 }
  

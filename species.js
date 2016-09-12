@@ -178,18 +178,19 @@ Species.prototype.get_diet = function(habitat, type) {
             switch(type) {
                 case "herbivore":
                     foods = ["fruits", "roots", "vegetables", "leaves", "flowers", "grasses"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ".",
-                             "Eats " + random_choice(foods) + ", preferring to forage on their own"];
+                    diets = ["Selectively eats " + random_choice(foods) + " and " + random_choice(foods) + ".",
+                             "Forages for " + random_choice(foods) + "."];
                     break;
                 case "omnivore":
                     foods = ["fruits", "roots", "vegetables", "leaves", "flowers", "grasses", "herd animals", "small birds", "insects", "fish"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + "."];
+                    diets = ["Eats " + random_choice(foods) + " and " + random_choice(foods) + "."];
                     break;
                 case "carnivore":
                     foods = ["herd animals", "small birds", "insects", "rotten corpses", "fish"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
-                             "Gorges on " + random_choice(foods) + ", then remains motionless for days.",
-                             "Eats " + random_choice(foods) + ", preferring to hunt on their own"];
+                    diets = ["Eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
+                             "Gorges on " + random_choice(foods) + ", then lies motionless for days.",
+                             "Hunts " + random_choice(foods) + " in packs.",
+                             "Hunts for " + random_choice(foods) + ", usually alone."];
                     break;
                 case "photosynthetic":
                     diets = ["Stands in place for long periods absorbing sunlight.",
@@ -201,18 +202,19 @@ Species.prototype.get_diet = function(habitat, type) {
             switch(type) {
                 case "herbivore":
                     foods = ["fruits", "roots", "vegetables", "leaves", "flowers", "grasses", "algae"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ".",
-                             "Eats " + random_choice(foods) + ", preferring to forage on their own"];
+                    diets = ["Selectively eats " + random_choice(foods) + " and " + random_choice(foods) + ".",
+                             "Forages for " + random_choice(foods) + "."];
                     break;
                 case "omnivore":
                     foods = ["fruits", "roots", "vegetables", "leaves", "flowers", "grasses", "herd animals", "small birds", "insects", "fish"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + "."];
+                    diets = ["Eats " + random_choice(foods) + " and " + random_choice(foods) + "."];
                     break;
                 case "carnivore":
                     foods = ["herd animals", "small birds", "insects", "rotten corpses", "fish", "crustaceans"];
                     diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
-                             "Gorges on " + random_choice(foods) + ", then remains motionless for days.",
-                             "Eats " + random_choice(foods) + ", preferring to hunt on their own"];
+                             "Gorges on " + random_choice(foods) + ", then lies motionless for days.",
+                             "Hunts " + random_choice(foods) + " in packs.",
+                             "Hunts for " + random_choice(foods) + ", usually alone."];
                     break;
                 case "photosynthetic":
                     diets = ["Stands in place for long periods absorbing sunlight.",
@@ -224,8 +226,8 @@ Species.prototype.get_diet = function(habitat, type) {
             switch(type) {
                 case "herbivore":
                     foods = ["algae", "seaweed", "kelpoid plants"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ".",
-                             "Eats " + random_choice(foods) + ", preferring to forage on their own"];
+                    diets = ["Eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
+                             "Forages for " + random_choice(foods) + "."];
                     break;
                 case "omnivore":
                     foods = ["fruits", "roots", "vegetables", "leaves", "flowers", "grasses", "herd animals", "small birds", "insects", "fish"];
@@ -234,8 +236,9 @@ Species.prototype.get_diet = function(habitat, type) {
                 case "carnivore":
                     foods = ["fish", "crustaceans", "plankton"];
                     diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
-                             "Gorges on " + random_choice(foods) + ", then remains motionless for days.",
-                             "Eats " + random_choice(foods) + ", preferring to hunt on their own"];
+                             "Gorges on " + random_choice(foods) + ", then floats motionless for days.",
+                             "Hunts " + random_choice(foods) + " in packs.",
+                             "Hunts for " + random_choice(foods) + ", usually alone"];
                     break;
                 case "photosynthetic":
                     diets = ["Floats in place for long periods absorbing sunlight.",
@@ -252,8 +255,8 @@ Species.prototype.get_diet = function(habitat, type) {
             switch(type) {
                 case "herbivore":
                     foods = ["roots", "tubers", "soil", "shoots", "fungi"];
-                    diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ".",
-                             "Eats " + random_choice(foods) + ", preferring to forage on their own"];
+                    diets = ["Eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
+                             "Forages for " + random_choice(foods) + "."];
                     break;
                 case "omnivore":
                     foods = ["roots", "tubers", "soil", "shoots", "fungi", "worms", "insects", "small herbivores"];
@@ -262,8 +265,9 @@ Species.prototype.get_diet = function(habitat, type) {
                 case "carnivore":
                     foods = ["worms", "insects", "small herbivores"];
                     diets = ["Primarily eats " + random_choice(foods) + " and " + random_choice(foods) + ", when available.",
-                             "Gorges on " + random_choice(foods) + ", then remains motionless for days.",
-                             "Eats " + random_choice(foods) + ", preferring to hunt on their own"];
+                             "Gorges on " + random_choice(foods) + ", then floats motionless for days.",
+                             "Hunts " + random_choice(foods) + " in packs.",
+                             "Hunts for " + random_choice(foods) + ", usually alone."];
                     break;
             break;
         }

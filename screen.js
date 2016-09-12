@@ -10,10 +10,35 @@ Screen.prototype.draw = function(canvas) {
 
 }
 
+// Title Screen =================================
+
+var TitleScreen = function() {
+
+    this.type = "title"
+    this.font = "30px Lucida Console";
+}
+
+TitleScreen.prototype.setupScreen = function(engine) {
+
+    this.bgImage = new Image;
+    this.bgImage.src = "images/title.png";
+}
+
+TitleScreen.prototype.draw = function(canvas) {
+   
+    canvas.drawImage(this.bgImage, 0, 0, 1024, 848);
+    
+    canvas.font = this.font;
+    canvas.fillStyle = "white";
+    canvas.fillText("CLICK ANYWHERE TO SAVE HUMANITY", 235, 775);
+    
+}
+
 // Panel Screen =================================
 
 var PanelScreen = function() {
 
+    this.type = "panel";
     this.modes = ["observe", "animate", "form"];
     this.categories = ["planet", "biology", "technology", "society", "messages", "visual"];
     this.current_mode = 0;
@@ -378,13 +403,13 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         canvas.fillText("Status: " + society.status, draw_x + (grid_width * 0), draw_y + (grid_height * 0));
         canvas.fillText("Rule: " + society.government, draw_x + (grid_width * 0), draw_y + (grid_height * 1));
         
-        canvas.fillText("Favored passtimes:", draw_x + (grid_width * 0), draw_y + (grid_height * 3));
+        canvas.fillText("Favored pastimes:", draw_x + (grid_width * 0), draw_y + (grid_height * 3));
         for(i = 0; i < 3; i++) {
             canvas.fillText("- " + psych.passtimes[i], draw_x + (grid_width * 0), draw_y + (grid_height * (4 + i) ));
         }
         
         if (psych.oppressions.length <= 0) {
-            canvas.fillText("Oppression: none", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
+            canvas.fillText("Oppressions: none", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
         } else {
             canvas.fillText("Oppressions:", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
             for(i = 0; i < psych.oppressions.length; i++) {

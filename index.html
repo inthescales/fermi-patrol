@@ -39,8 +39,12 @@
         var canvas = document.getElementById("game_canvas");
         var engine = new GameEngine(canvas, 20);      
 
-        engine.currentScreen = new PanelScreen();
-        engine.currentScreen.setupScreen(engine, "panel");
+        
+        //engine.currentScreen = new PanelScreen();
+        //engine.currentScreen.setupScreen(engine, "panel");
+        
+        engine.currentScreen = new TitleScreen();
+        engine.currentScreen.setupScreen(engine);
         
         load_sounds();
         

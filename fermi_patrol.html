@@ -37,10 +37,10 @@
         var ctx = get_context();
 
         var canvas = document.getElementById("game_canvas");
-        var engine = new GameEngine(canvas, 20);      
-
-        engine.currentScreen = new PanelScreen();
-        engine.currentScreen.setupScreen(engine, "panel");
+        var engine = new GameEngine(canvas, 20);
+        
+        engine.currentScreen = new TitleScreen();
+        engine.currentScreen.setupScreen(engine);
         
         load_sounds();
         
