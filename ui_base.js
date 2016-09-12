@@ -1,5 +1,6 @@
 var UIObject = {
     hidden: false,
+    enabled: true,
     intersects: function(obj, mouse) {
         var t = 5; //tolerance
         var xIntersect = (mouse.x + t) > obj.x && (mouse.x - t) < obj.x + obj.width;
@@ -8,7 +9,7 @@ var UIObject = {
     },
     updateStats: function(canvas){
     
-        if (this.hidden) {
+        if (this.hidden || !this.enabled) {
             return;
         }
         

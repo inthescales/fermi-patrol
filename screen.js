@@ -277,6 +277,7 @@ PanelScreen.prototype.add_form_objects = function(engine) {
     acceptButton.screen = this;
     acceptButton.handler = function() {
 
+        this.screen.getNewPlanet();
         this.screen.setMode(0);
     };
     this.accept_button = acceptButton;
@@ -351,7 +352,7 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         canvas.fillText(species.reproduction, draw_x + (grid_width * 0), draw_y + (grid_height * 13));
         
         if (species.image != null) {
-            drawSpecies(species, canvas, draw_x + grid_width + 120, draw_y + 30);
+            drawSpecies(species, canvas, draw_x + grid_width + 120, draw_y + 50);
         }
     }
     else if (this.current_category == 2) {

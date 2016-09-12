@@ -29,6 +29,7 @@ GameEngine.prototype.setupCanvas = function() {
  
     this.canvas.addEventListener("mousedown", function(e) {
         engine.context2D.mouse.clicked = !engine.context2D.mouse.down;
+        //console.log(engine.context2D.mouse.clicked);
         engine.context2D.mouse.down = true;
     });
  

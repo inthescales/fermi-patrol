@@ -10,21 +10,20 @@ function random_choice(arr) {
     return arr[roll];
 }
 
+var sound = [];
+
+function load_sounds() {
+
+    sound["mouseover_side"] = new Audio('sounds/blup_1.wav');
+    sound["click_side"] = new Audio('sounds/blip_1.wav');
+    sound["victory"] = new Audio('sounds/victory_tone.wav');
+    sound["warning"] = new Audio('sounds/warning.wav');
+}
+
 function play_sound(name) {
 
-    var audio = null;
+    var audio = sound[name];
 
-    switch (name) {
-        case "mouseover_side":
-            audio = new Audio('sounds/blup_1.wav'); break;
-        case "click_side":
-            audio = new Audio('sounds/blip_1.wav'); break;
-        case "victory":
-            audio = new Audio('sounds/victory_tone.wav'); break;
-        case "warning":
-            audio = new Audio('sounds/warning.wav'); break;    
-    }
-    
     if (audio != null) {
         audio.play();
     }

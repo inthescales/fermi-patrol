@@ -135,7 +135,7 @@ Species.prototype.get_shape = function(habitat) {
             shapes = ["biped", "quadruped", "multiped"/*, "slitheroid", "blob", "rooted"*/];
             break;
         case "aquatic":
-            shapes = ["biped", "quadruped", "fishoid"/*, "eeloid", "spheroid", "blob", "rooted"*/];
+            shapes = ["biped", "quadruped", "multiped"/*, "fishoid", "eeloid", "spheroid", "blob", "rooted"*/];
             break;
         case "subterranean":
             shapes = ["biped", "quadruped", "multiped"/*, "slitheroid", "spheroid", "blob"*/];
@@ -277,12 +277,14 @@ Species.prototype.get_reproduction = function(habitat, shape) {
 
     var repro = [];
         
-    repro = ["Bears single live young, which they raise",
-             "Bears live young in a litter",
-             "Bears live young spontaneously, which wander off",
-             "Lays eggs, which they carry with them",
-             "Lays eggs in a clutch",
-             "Lays eggs spontaneously, which are raised publicly",
+    repro = ["Bears single live young.",
+             "Bears live young in a litter.",
+             "Bears live young spontaneously.",
+             "Carries live young in a pouch.",
+             "Lays a single egg in a nest.",
+             "Carries eggs in a sac.",
+             "Lays eggs in a clutch.",
+             "Lays eggs spontaneously.",
              "Reproduces through budding",
              "Reproduces by scattering seeds",
              "Reproduces by spores"];
