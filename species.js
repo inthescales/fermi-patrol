@@ -482,8 +482,22 @@ Psych.prototype.get_pastime = function(virtue) {
 Psych.prototype.get_oppressions = function(count) {
 
     var ret = [];
-    var oppressions = ["phenotype", "religion", "custom", "language", "odor", "brand loyalty", "heritage", "nation"];
-    
+    var oppressions = ["Religious oppression",
+                       "Restrictive caste system",
+                       "Racial discrimination",
+                       "Nationalistic warfare",
+                       "Violence between ethnic groups",
+                       "Eat own young",
+                       "Eat mates after reproduction",
+                       "Violent conflict over brand loyalties",
+                       "Oppression based on odor",
+                       "Drove competing sentients to extinction",
+                       "Subject young to brutal tests of strength",
+                       "Imprison large segment of population",
+                       "Practice slavery",
+                       "Brutal conflicts over resources",
+                       "Nonconsentual medical experimentation",
+                       "Censorship of differing viewpoints"];    
     
     for (var i = 0; i < count; i++) {
         var got = random_choice(oppressions);
@@ -552,7 +566,7 @@ var Tech = function(psych) {
         this.inventions.push(newinv);
     }
     
-    var probeCount = 2;
+    var probeCount = 3;
     var probeNum = 1 + Math.floor( Math.random() * probeCount);
     
     this.probeImage = new Image();
@@ -603,52 +617,52 @@ Society.prototype.get_government = function(psych) {
     var words = []
     switch (virtue.name) {
         case "friendliness":
-            words = ["benevolent", "federated"];
+            words = ["benevolent", "federated", "loving", "mutualist"];
             break;
         case "hostility":
-            words = ["militant", "tyrannical", "honorable"];
+            words = ["militant", "tyrannical", "honorable", "brutal"];
             break;
         case "protectiveness":
-            words = ["fortress", "survivalist", "nationalist"];
+            words = ["fortress", "survivalist", "nationalist", "watchful"];
             break;
         case "appeasement":
-            words = ["representative", "decentralized"];
+            words = ["representative", "decentralized", "popular"];
             break;
         case "innovation":
-            words = ["technocratic", "radical"];
+            words = ["technocratic", "radical", "reformist", "experimental"];
             break;
         case "dogma":
-            words = ["ancestral", "ecclesiastic"];
+            words = ["ancestral", "ecclesiastic", "ancient", "hierarchical"];
             break;
         case "hedonism":
-            words = ["opulent", "benevolent"];
+            words = ["opulent", "benevolent", "loving", "festive"];
             break;
         case "asceticism":
-            words = ["austere"];
+            words = ["austere", "simple", "prudent"];
             break;
         case "industry":
-            words = ["workers'", "technocratic"];
+            words = ["workers'", "technocratic", "optimized"];
             break;
         case "contemplation":
-            words = ["ritual"];
+            words = ["ritual", "serene", "meditative"];
             break;
         case "cooperation":
-            words = ["workers'", "egalitarian"];
+            words = ["workers'", "egalitarian", "mutualist", "popular", "federated"];
             break;
         case "competition":
             words = ["meritocratic", "cut-throat"];
             break;
         case "ambition":
-            words = ["meritocratic"];
+            words = ["meritocratic", "cut-throat", "experimental"];
             break;
         case "contentment":
-            words = ["representative", "federal"];
+            words = ["decentralized", "ad-hoc", "relaxed"];
             break;
         case "spirituality":
-            words = ["theocratic", "enlightened"];
+            words = ["theocratic", "enlightened", "divine", "heavenly"];
             break;
         case "materialism":
-            words = ["technocratic"];
+            words = ["technocratic", "pragmatic", "optimized"];
             break;
         default:
             words = ["broken"];
@@ -675,25 +689,25 @@ var Message = function(psych) {
     
     switch (virtue.name) {
         case "friendliness":
-            openings = ["Greetings friends!", "Hello aliens!"];
+            openings = ["Greetings friends!", "Hello aliens!", "We open our hearts to you, aliens.", "We are now friends!"];
             break;
         case "hostility":
-            openings = ["Attention aliens.", "A warning to all aliens", "Aliens beware"];
+            openings = ["Attention aliens.", "A warning to all aliens", "Aliens beware", "To whom it may concern:"];
             break;
         case "protectiveness":
-            openings = ["We know you're out there.", "We see you."];
+            openings = ["We know you're out there.", "We see you.", "To whom it may concern:"];
             break;
         case "appeasement":
-            openings = ["We humbly welcome aliens.", "Come parlay with us, aliens!"];
+            openings = ["We humbly welcome aliens.", "Come parlay with us, aliens!", "Don't be afraid, aliens!", "We come in peace!"];
             break;
         case "innovation":
             openings = ["Greetings to intelligent life.", "We greet alien intelligence."];
             break;
         case "dogma":
-            openings = ["Attention to strangers.", "Offworlders.", "Those who dwell outside:"];
+            openings = ["Attention to strangers.", "Offworlders.", "Those who dwell outside:", "Greetings foreign ones."];
             break;
         case "hedonism":
-            openings = ["Pleasant living to you, aliens."];
+            openings = ["Pleasant living to you, aliens.", "Joy to you, aliens.", "Be happy, star friends"];
             break;
         case "asceticism":
             openings = ["Greetings.", "We greet you, aliens."];
@@ -756,10 +770,10 @@ var Message = function(psych) {
                 middles = ["Send us your rare goods!", "Come enjoy our lovely planet.", "Come see our beautiful faces."];
                 break;
             case "asceticism":
-                middles = ["We need nothing from you.", "We have everything we need here.", "Our lives are complete.", "Your influence will distract us.", "Do not disturb our practices."];
+                middles = ["We need nothing from you.", "We have everything we need here.", "Our lives are complete.", "Your influence will distract us.", "Do not disturb our practices.", "We are pure."];
                 break;
             case "industry":
-                middles = ["Let's all work together!", "We hope for a lively exchange of goods"];
+                middles = ["Let's all work together!", "We hope for a lively exchange of goods", "We are very busy.", "Our world is very productive.", "We have enclosed industrial productivity charts."];
                 break;
             case "contemplation":
                 middles = ["We wish to know your mysteries", "Let us contemplate the universe together", "Let us share our wisdom.", "We wish to know you."];
@@ -768,13 +782,13 @@ var Message = function(psych) {
                 middles = ["We would consider a union between our worlds.", "We hope our planets can work together", "Let us learn each other's ways"];
                 break;
             case "competition":
-                middles = ["We welcome competition from your world!", "We will show you the glory of our people!", "We're not afraid."];
+                middles = ["We welcome competition from your world!", "We will show you the glory of our people!", "We're not afraid.", "We can do anything you can do."];
                 break;
             case "ambition":
-                middles = ["We're sure you have many wonderful things to share.", "Come speak with us privately."];
+                middles = ["We're sure you have many wonderful things to share.", "Come speak with us privately.", "We would like you to support our faction on this planet."];
                 break;
             case "contentment":
-                middles = ["We would like to receive you.", "We will show you our happiness", "Our planet is a paradise!", "We will share our bounty with you!"];
+                middles = ["We would like to receive you.", "We will show you our happiness", "Our planet is a paradise!", "We will share our bounty with you!", "Surely you are happy on your own world?"];
                 break;
             case "spirituality":
                 middles = ["We will teach you the truth of the divine", "Do you know of God yet?", "Let us join our spirits!", "Please read our holy texts."];
@@ -806,7 +820,7 @@ var Message = function(psych) {
             closings = ["We hope you will come.", "We hope this pleases you.", "We hope to see you."];
             break;
         case "innovation":
-            closings = ["To the future!", "Toward greater things!"];
+            closings = ["To the future!", "Toward greater things!", "We hope you are as excited as we are!"];
             break;
         case "dogma":
             closings = ["So it was, so it will be.", "We look forward to teaching you.", "It will be as the scrolls say."];
@@ -815,10 +829,10 @@ var Message = function(psych) {
             closings = ["Pleasant life to you!", "Live long and prosper!", "Be well!", "Pleasure to you!", "Happiness be yours."];
             break;
         case "asceticism":
-            closings = ["..."];
+            closings = ["...", "That is all.", "End.", "We must purify ourselves now."];
             break;
         case "industry":
-            closings = ["Farewell friends"];
+            closings = ["Farewell friends", "We hope you will do business with us."];
             break;
         case "contemplation":
             closings = ["We will be thinking of you.", "We will contemplate your arrival."];
@@ -827,13 +841,13 @@ var Message = function(psych) {
             closings = ["Let's make the future bright!", "Until we see you."];
             break;
         case "competition":
-            closings = ["Bring it on!"];
+            closings = ["Bring it on!", "We're ready for you!", "Contact us as soon as possible!"];
             break;
         case "ambition":
             closings = ["We have much to gain from our meeting.", "We eagerly await you."];
             break;
         case "contentment":
-            closings = ["We will wait for you."];
+            closings = ["We will wait for you.", "We wish you happiness."];
             break;
         case "spirituality":
             closings = ["Goddess be with you.", "May your souls know peace.", "Rest to you.", "A thousand blessings!", "Be blesesed"];

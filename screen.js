@@ -409,9 +409,9 @@ PanelScreen.prototype.draw_observe = function(canvas) {
         }
         
         if (psych.oppressions.length <= 0) {
-            canvas.fillText("Oppressions: none", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
+            canvas.fillText("Atrocities: none", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
         } else {
-            canvas.fillText("Oppressions:", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
+            canvas.fillText("Atrocities:", draw_x + (grid_width * 0), draw_y + (grid_height * 8));
             for(i = 0; i < psych.oppressions.length; i++) {
                 canvas.fillText("- " + psych.oppressions[i], draw_x + (grid_width * 0), draw_y + (grid_height * (9 + i) ));
             }
